@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\heritage\Entity\ValueObject;
+namespace App\Shared\Entity\ValueObject;
 
 use Ramsey\Uuid\Uuid as BaseUuid;
 

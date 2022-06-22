@@ -1,34 +1,34 @@
 <?php
 
-namespace App\heritage\Entity;
+namespace App\Heritage\Entity;
 
-use App\heritage\Entity\ValueObject\Uuid;
+use App\Heritage\Entity\ValueObject\MemberUuid;
+use DateTime;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class Member implements Properties
 {
-    private $nameUuid;
-    private $dateBorn;
-    private $land;
-    private $money;
-    private $immovable;
-    private $hasSon;
-    private $hasParent;
-    private $members;
+    private string $nameUuid;
+    private DateTime $dateBorn;
+    private int $land;
+    private int $money;
+    private int $immovable;
+    private array $members;
 
     /**
-     * @param string $dateBorn
+     * @param DateTime $dateBorn
      * @param int $land
      * @param int $money
      * @param int $immovable
      */
-    public function __construct(string $dateBorn, int $land, int $money, int $immovable)
+    public function __construct(DateTime $dateBorn, int $land, int $money, int $immovable, array $members = array())
     {
-        $this->nameUuid = Uuid::generate();
+        $this->nameUuid = MemberUuid::generate();
         $this->dateBorn = $dateBorn;
         $this->land = $land;
         $this->money = $money;
         $this->immovable = $immovable;
+        $this->members = $members;
     }
 
     /**
@@ -56,67 +56,67 @@ class Member implements Properties
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
-    public function getDateBorn()
+    public function getDateBorn(): DateTime
     {
         return $this->dateBorn;
     }
 
     /**
-     * @param mixed $dateBorn
+     * @param DateTime $dateBorn
      */
-    public function setDateBorn($dateBorn): void
+    public function setDateBorn(DateTime $dateBorn): void
     {
         $this->dateBorn = $dateBorn;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getLand()
+    public function getLand(): int
     {
         return $this->land;
     }
 
     /**
-     * @param mixed $land
+     * @param int $land
      */
-    public function setLand($land): void
+    public function setLand(int $land): void
     {
-        $this->land = $land;
+        $this->land += $land;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getMoney()
+    public function getMoney(): int
     {
         return $this->money;
     }
 
     /**
-     * @param mixed $money
+     * @param int $money
      */
-    public function setMoney($money): void
+    public function setMoney(int $money): void
     {
-        $this->money = $money;
+        $this->money += $money;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getImmovable()
+    public function getImmovable(): int
     {
         return $this->immovable;
     }
 
     /**
-     * @param mixed $immovable
+     * @param int $immovable
      */
-    public function setImmovable($immovable): void
+    public function setImmovable(int $immovable): void
     {
-        $this->immovable = $immovable;
+        $this->immovable += $immovable;
     }
 
 
