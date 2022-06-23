@@ -104,6 +104,14 @@ class Member implements Properties
     }
 
     /**
+     * @param int $money
+     */
+    public function setMoneyReset(int $money): void
+    {
+        $this->money = $money;
+    }
+
+    /**
      * @return int
      */
     public function getImmovable(): int
